@@ -1,41 +1,28 @@
-//Initialize the dropdown selected to Celsius
-function tempInit(){
-    document.getElementById("tempSelected").innerHTML = "Celsius";
-}
-
 //Change text of dropdown selected
-function showTemp(item){
-    //change the text in dropdown by the item selected
-    document.getElementById("tempSelected").innerHTML = item.innerHTML;
+function showTemp(){
+    let tempSelected = document.getElementById("temperatures").value;
+    const textResult = document.getElementById("textResult");
 
-    
-    if(document.getElementById("tempSelected").innerHTML==='Celsius'){
-        document.getElementById("textResult").innerHTML = "Resultado en Celsius";
-        Result = 0;
-        document.getElementById("Result").innerHTML = Result;
-    }else if(document.getElementById("tempSelected").innerHTML==='Kelvin'){
-        document.getElementById("textResult").innerHTML = "Resultado en Kelvin";
-        Result = 0;
-        document.getElementById("Result").innerHTML = Result;
+    if(tempSelected == 'celsius'){
+        textResult.innerHTML = 'Result in Celsius';
+    }else if(tempSelected == 'kelvin'){
+        textResult.innerHTML = 'Result in Kelvin';
     }
+    CalcTemp();
 }
-
 
 //Calulates temperature
 function CalcTemp() {
+    let tempSelected = document.getElementById("temperatures").value;
     //Calculates temperature based on selection
-    if(document.getElementById("tempSelected").innerHTML==='Celsius'){
+    if(tempSelected=='celsius'){
         let tempValue = document.getElementById("tempValue");
         let Result = (Number(tempValue.value) -32)*(5/9);
-
-        document.getElementById("Result").innerHTML = Result;
-
-    }else if(document.getElementById("tempSelected").innerHTML==='Kelvin'){
+        document.getElementById("Result").innerHTML = Result+"°";
+    }else if(tempSelected=='kelvin'){
         let tempValue = document.getElementById("tempValue");
         let Result = (Number(tempValue.value) -32)*(5/9)+273.15;
-
-        document.getElementById("Result").innerHTML = Result;
+        document.getElementById("Result").innerHTML = Result+"°";
     }
-
 }
 
